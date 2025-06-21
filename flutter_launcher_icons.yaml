@@ -1,0 +1,16 @@
+flutter_launcher_icons:
+  ios: false
+
+  android: false
+
+  web:
+    generate: false
+
+  macos:
+    generate: true
+    image_path: "assets/icon_macos.png"
+
+  windows:
+    generate: true
+    icon_size: 128
+    image_path: "assets/icon_windows.png"
