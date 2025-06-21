@@ -1,7 +1,17 @@
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_acrylic/flutter_acrylic.dart';
+import 'package:window_manager/window_manager.dart';
 
-void main() {
+const title = 'GlanceGo';
+const size = Size(600, 500);
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await _initWindow();
   runApp(const MyApp());
+  _showWindow();
 }
 
 class MyApp extends StatelessWidget {
@@ -11,56 +21,70 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      home: const MyHomePage(),
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF131520),
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          brightness: Brightness.dark,
+          seedColor: const Color(0xFF272A3F),
+        ),
+      ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({required this.title, super.key});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
+    return const Scaffold(backgroundColor: Colors.transparent);
   }
+}
+
+Future<void> _initWindow() async {
+  const options = WindowOptions(
+    size: size,
+    title: title,
+    center: true,
+    skipTaskbar: true,
+    minimumSize: size,
+    maximumSize: size,
+    alwaysOnTop: true,
+    fullScreen: false,
+    windowButtonVisibility: false,
+    titleBarStyle: TitleBarStyle.hidden,
+    backgroundColor: Colors.transparent,
+  );
+
+  await Future.wait([
+    Window.initialize(),
+    windowManager.ensureInitialized(),
+  ]);
+
+  await Future.wait([
+    Window.hideWindowControls(),
+    Window.makeTitlebarTransparent(),
+    Window.enableFullSizeContentView(),
+    windowManager.waitUntilReadyToShow(options),
+    Window.setEffect(effect: WindowEffect.acrylic),
+  ]);
+}
+
+void _showWindow() {
+  doWhenWindowReady(() {
+    appWindow.size = size;
+    appWindow.title = title;
+    appWindow.minSize = size;
+    appWindow.maxSize = size;
+    appWindow.alignment = Alignment.center;
+    appWindow.show();
+  });
 }

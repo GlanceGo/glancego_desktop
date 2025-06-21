@@ -1,10 +1,16 @@
 {
   "cSpell.words": [
     "APPL",
+    "bitsdojo",
+    "COCOAPODS",
     "cupertino",
     "glancego",
+    "podfile",
+    "podhelper",
     "pubspec",
-    "softyes"
+    "softyes",
+    "Titlebar",
+    "xcconfig"
   ],
   "dart.flutterSdkPath": ".fvm/versions/stable"
 }
