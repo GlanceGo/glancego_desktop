@@ -95,7 +95,7 @@ BEGIN
             VALUE "InternalName", "glancego" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2025 br.com.softyes. All rights reserved." "\0"
             VALUE "OriginalFilename", "glancego.exe" "\0"
-            VALUE "ProductName", "glancego" "\0"
+            VALUE "ProductName", "GlanceGo" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
