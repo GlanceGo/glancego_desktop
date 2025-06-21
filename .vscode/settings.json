@@ -1,5 +1,6 @@
 {
   "cSpell.words": [
     "softyes"
-  ]
+  ],
+  "dart.flutterSdkPath": ".fvm/versions/stable"
 }
