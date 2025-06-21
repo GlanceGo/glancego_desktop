@@ -5,6 +5,15 @@ publish_to: "none"
 homepage: https://softyes.com.br
 repository: https://github.com/GlanceGo/glancego_desktop
 
+platforms:
+  linux:
+  macos:
+  windows:
+
+screenshots:
+  - description: "GlanceGo project logo"
+    path: readme/logo.png
+
 version: 0.1.0+1
 
 environment:
@@ -15,10 +24,12 @@ dependencies:
   flutter:
     sdk: flutter
 
+  google_fonts: ^6.2.1
   flutter_acrylic: ^1.1.4
   window_manager: ^0.5.0
   bitsdojo_window: ^0.1.6
   cupertino_icons: ^1.0.8
+  solar_icon_pack: ^0.2.1
 
 dev_dependencies:
   flutter_test:

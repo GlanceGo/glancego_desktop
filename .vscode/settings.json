@@ -5,6 +5,7 @@
     "COCOAPODS",
     "cupertino",
     "glancego",
+    "linux",
     "podfile",
     "podhelper",
     "pubspec",
@@ -12,5 +13,6 @@
     "Titlebar",
     "xcconfig"
   ],
-  "dart.flutterSdkPath": ".fvm/versions/stable"
+  "dart.flutterSdkPath": ".fvm/versions/stable",
+  "makefile.configureOnOpen": false
 }

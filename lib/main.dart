@@ -1,6 +1,7 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_acrylic/flutter_acrylic.dart';
+import 'package:glancego/ui/core/theme/app_theme.dart';
 import 'package:window_manager/window_manager.dart';
 
 const title = 'GlanceGo';
@@ -20,22 +21,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: title,
       home: const MyHomePage(),
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF131520),
-        ),
-      ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          brightness: Brightness.dark,
-          seedColor: const Color(0xFF272A3F),
-        ),
-      ),
+      themeAnimationCurve: Curves.easeInOut,
+      theme: AppTheme.getData(isDark: false),
+      darkTheme: AppTheme.getData(isDark: true),
     );
   }
 }
