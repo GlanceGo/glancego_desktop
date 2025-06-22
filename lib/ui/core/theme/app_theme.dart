@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:glancego/ui/core/theme/app_theme_metrics.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 abstract class AppTheme {
@@ -7,6 +8,7 @@ abstract class AppTheme {
   static ThemeData getData({required bool isDark}) {
     final ThemeData theme;
     final Brightness brightness;
+    const metrics = AppThemeMetricsImpl();
     if (isDark) {
       brightness = Brightness.dark;
       theme = ThemeData.dark(useMaterial3: true);
@@ -16,6 +18,7 @@ abstract class AppTheme {
     }
 
     return theme.copyWith(
+      extensions: [metrics],
       brightness: brightness,
       colorScheme: ColorScheme.fromSeed(
         brightness: brightness,
