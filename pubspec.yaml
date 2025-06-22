@@ -14,7 +14,7 @@ screenshots:
   - description: "GlanceGo project logo"
     path: readme/logo.png
 
-version: 0.1.0+1
+version: 0.1.1+2
 
 environment:
   sdk: ^3.8.1
@@ -25,20 +25,20 @@ dependencies:
     sdk: flutter
 
   google_fonts: ^6.2.1
-  flutter_acrylic: ^1.1.4
   window_manager: ^0.5.0
   bitsdojo_window: ^0.1.6
   cupertino_icons: ^1.0.8
   solar_icon_pack: ^0.2.1
+  flutter_acrylic: ^1.1.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  fastforge: ^0.6.0
   flutter_lints: ^6.0.0
   very_good_analysis: ^9.0.0
   flutter_launcher_icons: ^0.14.4
-  fastforge: ^0.6.0
 
 flutter:
   uses-material-design: true
