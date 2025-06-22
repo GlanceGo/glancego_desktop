@@ -2,6 +2,7 @@ import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_acrylic/flutter_acrylic.dart';
 import 'package:glancego/ui/core/theme/app_theme.dart';
+import 'package:glancego/ui/root/root_screen.dart';
 import 'package:window_manager/window_manager.dart';
 
 const title = 'GlanceGo';
@@ -22,21 +23,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: title,
-      home: const MyHomePage(),
+      home: const RootScreen(),
       debugShowCheckedModeBanner: false,
       themeAnimationCurve: Curves.easeInOut,
       theme: AppTheme.getData(isDark: false),
       darkTheme: AppTheme.getData(isDark: true),
     );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(backgroundColor: Colors.transparent);
   }
 }
 
