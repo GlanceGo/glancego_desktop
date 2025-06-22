@@ -1,0 +1,22 @@
+output: dist/
+
+releases:
+  - name: release
+    jobs:
+      - name: windows
+        package:
+          target: exe
+          platform: windows
+          build_args:
+            release: true
+            obfuscate: true
+            split-debug-info: ./build/windows/debug_info
+
+      - name: macos
+        package:
+          target: dmg
+          platform: macos
+          build_args:
+            release: true
+            obfuscate: true
+            split-debug-info: ./build/macos/debug_info

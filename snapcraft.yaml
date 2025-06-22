@@ -1,0 +1,30 @@
+version: 0.1.0
+
+name: glancego
+summary: GlanceGo
+description: Find everything you're looking for | An open-source file finder and application launcher designed to streamline your workflow.
+
+base: core22
+grade: stable
+confinement: strict
+
+slots:
+  dbus-glancego:
+    bus: session
+    interface: dbus
+    name: br.com.softyes.glancego
+
+apps:
+  glancego:
+    command: glancego
+    extensions: [gnome]
+    plugs:
+      - network
+    slots:
+      - dbus-glancego
+
+parts:
+  glancego:
+    source: .
+    plugin: flutter
+    flutter-target: lib/main.dart

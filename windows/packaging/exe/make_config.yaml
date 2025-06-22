@@ -1,0 +1,14 @@
+script_template: inno_setup.iss
+
+publisher: SoftYes TI
+display_name: GlanceGo
+publisher_url: https://softyes.com.br
+app_id: 6B51C43C-AF84-49BB-B2C3-11F54178A747
+setup_icon_file: windows\runner\resources\app_icon.ico
+launch_at_startup: true
+create_desktop_icon: true
+
+locales:
+  - en
+  - es
+  - ptbr

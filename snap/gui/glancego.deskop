@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=GlanceGo
+Exec=glancego
+Version=0.1.0
+Terminal=false
+Type=Application
+GenericName=GlanceGo
+Icon=${SNAP}/meta/gui/glancego.svg
+StartupWMClass=br.com.softyes.glancego
+Categories=Utility;FileManager;Search;Productivity;Launcher;Development
+Keywords=file;finder;launcher;search;quick;productivity;workflow;tool;utility;application;open-source;glance
+Comment=Find everything you're looking for | An open-source file finder and application launcher designed to streamline your workflow.
