@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+* Fixed application window background in Windows
+
 ## 0.1.0
 
 * Theme
