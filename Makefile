@@ -23,8 +23,8 @@ fedora_deps:
 
 snap:
 	@echo "Building Snap application..."
-	@mkdir -p ${DEST_DIR}/
 	@make clean
+	@mkdir -p ${DEST_DIR}/
 	@snapcraft clean glancego
 	@snapcraft --use-lxd --bind-ssh
 	@mv ./glancego_*_amd64.snap ${OUTPUT_PATH}_linux_x64.snap
@@ -32,16 +32,16 @@ snap:
 
 macos:
 	@echo "Building macOS application..."
-	@mkdir -p ${DEST_DIR}/
 	@make clean
+	@mkdir -p ${DEST_DIR}/
 	@fvm dart run fastforge:main release --name release --jobs macos
 	@mv ${DEST_DIR}/glancego-*-macos.dmg ${OUTPUT_PATH}_macos_x64.dmg
 	@echo "Done! Successfully packaged at $$(echo ${OUTPUT_PATH}_macos_x64.dmg)"
 
 windows:
 	@echo "Building Windows application..."
-	@mkdir -p ${DEST_DIR}/
 	@make clean
+	@mkdir -p ${DEST_DIR}/
 	@cp ./LICENSE ./CHANGELOG.md ./README.md ${DEST_DIR}/
 	@fvm dart run fastforge:main release --name release --jobs windows
 	@rm -rf ${DEST_DIR}/LICENSE ${DEST_DIR}/CHANGELOG.md ${DEST_DIR}/README.md

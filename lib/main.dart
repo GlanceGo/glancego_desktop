@@ -56,9 +56,10 @@ Future<void> _initWindow() async {
     Window.hideWindowControls(),
     Window.makeTitlebarTransparent(),
     Window.enableFullSizeContentView(),
-    windowManager.waitUntilReadyToShow(options),
-    Window.setEffect(effect: WindowEffect.acrylic),
   ]);
+
+  await windowManager.waitUntilReadyToShow(options);
+  await Window.setEffect(effect: WindowEffect.acrylic);
 }
 
 void _showWindow() {
