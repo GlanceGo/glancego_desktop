@@ -27,6 +27,7 @@
     "pubspec",
     "recursesubdirs",
     "runascurrentuser",
+    "Searchbar",
     "skipifsilent",
     "snapcraft",
     "softyes",
