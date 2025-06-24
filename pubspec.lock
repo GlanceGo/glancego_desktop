@@ -41,6 +41,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.13.0"
+  auto_injector:
+    dependency: transitive
+    description:
+      name: auto_injector
+      sha256: "2952a4d4339ed3b65e8e54765ec68ee6ada5cb21d83cb8d39e3f6b4e690ab5ca"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
   bitsdojo_window:
     dependency: "direct main"
     description:
@@ -246,6 +254,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.0"
+  flutter_command:
+    dependency: "direct main"
+    description:
+      name: flutter_command
+      sha256: e6e77c60ac104aec297ccf7c90d186d0409bbcd8665df7c0ff43f34d9d538067
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.2.2"
   flutter_launcher_icons:
     dependency: "direct dev"
     description:
@@ -262,11 +278,27 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.0"
+  flutter_modular:
+    dependency: "direct main"
+    description:
+      name: flutter_modular
+      sha256: "86c077c5276e8e4d3ffd1ba17e439a975cb5fdea3847242dbb19aa5eb78ee944"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.3.3"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
+  functional_listener:
+    dependency: transitive
+    description:
+      name: functional_listener
+      sha256: c096db771b4ce7ba0f886cc4a761044b11e8276a7bc24cfc812dc4b2bc6f5b16
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.0"
   get_it:
     dependency: transitive
     description:
@@ -315,6 +347,46 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.6.0"
+  hotkey_manager:
+    dependency: "direct main"
+    description:
+      name: hotkey_manager
+      sha256: "06f0655b76c8dd322fb7101dc615afbdbf39c3d3414df9e059c33892104479cd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.3"
+  hotkey_manager_linux:
+    dependency: transitive
+    description:
+      name: hotkey_manager_linux
+      sha256: "83676bda8210a3377bc6f1977f193bc1dbdd4c46f1bdd02875f44b6eff9a8473"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.0"
+  hotkey_manager_macos:
+    dependency: transitive
+    description:
+      name: hotkey_manager_macos
+      sha256: "03b5967e64357b9ac05188ea4a5df6fe4ed4205762cb80aaccf8916ee1713c96"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.0"
+  hotkey_manager_platform_interface:
+    dependency: transitive
+    description:
+      name: hotkey_manager_platform_interface
+      sha256: "98ffca25b8cc9081552902747b2942e3bc37855389a4218c9d50ca316b653b13"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.0"
+  hotkey_manager_windows:
+    dependency: transitive
+    description:
+      name: hotkey_manager_windows
+      sha256: "0d03ced9fe563ed0b68f0a0e1b22c9ffe26eb8053cb960e401f68a4f070e0117"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.0"
   http:
     dependency: transitive
     description:
@@ -435,6 +507,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.16.0"
+  modular_core:
+    dependency: transitive
+    description:
+      name: modular_core
+      sha256: "5baaa460ac9d85d457d6864ef41a2194b8115a6bdeb585a684789f2d9004c892"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.2"
   msix:
     dependency: transitive
     description:
@@ -579,6 +659,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.2"
+  quiver:
+    dependency: transitive
+    description:
+      name: quiver
+      sha256: ea0b925899e64ecdfbf9c7becb60d5b50e706ade44a85b2363be2a22d88117d2
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.2"
   recase:
     dependency: transitive
     description:
@@ -587,6 +675,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.0"
+  result_dart:
+    dependency: transitive
+    description:
+      name: result_dart
+      sha256: "3c69c864a08df0f413a86be211d07405e9a53cc1ac111e3cc8365845a0fb5288"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
   screen_retriever:
     dependency: transitive
     description:
@@ -712,6 +808,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+  uni_platform:
+    dependency: transitive
+    description:
+      name: uni_platform
+      sha256: e02213a7ee5352212412ca026afd41d269eb00d982faa552f419ffc2debfad84
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.3"
   unified_distributor:
     dependency: transitive
     description:

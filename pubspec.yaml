@@ -30,6 +30,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   solar_icon_pack: ^0.2.1
   flutter_acrylic: ^1.1.4
+  hotkey_manager: ^0.2.3
+  flutter_modular: ^6.3.3
+  flutter_command: ^7.2.2
 
 dev_dependencies:
   flutter_test:

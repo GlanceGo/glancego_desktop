@@ -1,8 +1,10 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_acrylic/flutter_acrylic.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:glancego/routing/app_routes.dart';
 import 'package:glancego/ui/core/theme/app_theme.dart';
-import 'package:glancego/ui/root/root_screen.dart';
+import 'package:glancego/ui/root/root_module.dart';
 import 'package:window_manager/window_manager.dart';
 
 const title = 'GlanceGo';
@@ -12,22 +14,34 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await _initWindow();
-  runApp(const MyApp());
+  runApp(ModularApp(module: RootModule(), child: const MyApp()));
   _showWindow();
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<StatefulWidget> createState() => _MyAppState();
+}
+
+final class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    Modular.setInitialRoute(AppRoutes.root);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: title,
-      home: const RootScreen(),
       debugShowCheckedModeBanner: false,
       themeAnimationCurve: Curves.easeInOut,
       theme: AppTheme.getData(isDark: false),
       darkTheme: AppTheme.getData(isDark: true),
+      routerDelegate: Modular.routerDelegate,
+      routeInformationParser: Modular.routeInformationParser,
     );
   }
 }
