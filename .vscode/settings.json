@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "appdmg",
+    "appiconset",
     "APPL",
     "autodesktop",
     "autoprograms",
@@ -16,6 +17,8 @@
     "endfor",
     "fastforge",
     "glancego",
+    "icns",
+    "iconutil",
     "ignoreversion",
     "inapp",
     "inno",
@@ -37,6 +40,7 @@
     "Symbolication",
     "Titlebar",
     "userstartup",
+    "xcassets",
     "xcconfig"
   ],
   "dart.flutterSdkPath": ".fvm/versions/stable",

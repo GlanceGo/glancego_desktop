@@ -8,6 +8,7 @@ APP_VERSION=$$(grep '^version:' ./pubspec.yaml | sed -E 's/version:[[:space:]]*(
 icons:
 	@echo "Generating launch icons..."
 	@cp -f -v ./assets/icon_linux.svg ./snap/gui/glancego.svg
+	@cp -f -v ./assets/icon_macos.icns ./macos/packaging/dmg/icon.icns
 	@dart run flutter_launcher_icons
 
 macos_deps:
