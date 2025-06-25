@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=GlanceGo
 Exec=glancego
-Version=0.2.0
+Version=0.3.0
 Terminal=false
 Type=Application
 GenericName=GlanceGo
