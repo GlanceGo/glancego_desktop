@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:glancego/data/repositories/app_repository.dart';
+import 'package:glancego/data/repositories/interaction_repository.dart';
 import 'package:glancego/data/services/hotkey_service.dart';
 import 'package:glancego/data/services/window_service.dart';
 import 'package:glancego/main.dart';
@@ -16,11 +16,11 @@ final class RootModule extends Module {
     const windowService = WindowService(title: title, size: Size(600, 500));
 
     i
-      ..addSingleton<AppRepository>(
-        () => const AppRepositoryImpl(windowService, hotkeyService),
+      ..addSingleton<InteractionRepository>(
+        () => const InteractionRepositoryImpl(windowService, hotkeyService),
       )
       ..addSingleton<RootViewModel>(
-        () => RootViewModel(i.get<AppRepository>()),
+        () => RootViewModel(i.get<InteractionRepository>()),
       );
   }
 

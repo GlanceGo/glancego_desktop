@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_command/flutter_command.dart';
 import 'package:glancego/data/domain/hot_key_modifier_enum.dart';
 import 'package:glancego/data/domain/hot_key_scope_enum.dart';
-import 'package:glancego/data/repositories/app_repository.dart';
+import 'package:glancego/data/repositories/interaction_repository.dart';
 
 final class RootViewModel extends ChangeNotifier {
   RootViewModel(this._appRepository) {
@@ -11,7 +11,7 @@ final class RootViewModel extends ChangeNotifier {
     registerHotKeys = Command.createAsyncNoParamNoResult(_registerHotKeys);
   }
 
-  final AppRepository _appRepository;
+  final InteractionRepository _appRepository;
 
   late final Command<void, void> initialize;
   late final Command<void, void> registerHotKeys;

@@ -1,11 +1,11 @@
 import 'package:flutter/services.dart';
 import 'package:glancego/data/domain/hot_key_modifier_enum.dart';
 import 'package:glancego/data/domain/hot_key_scope_enum.dart';
-import 'package:glancego/data/services/hot_key_service.dart';
+import 'package:glancego/data/services/hotkey_service.dart';
 import 'package:glancego/data/services/window_service.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
 
-abstract class AppRepository {
+abstract class InteractionRepository {
   Future<void> initialize();
   Future<void> showWindow();
   Future<void> hideWindow();
@@ -17,11 +17,11 @@ abstract class AppRepository {
   });
 }
 
-final class AppRepositoryImpl implements AppRepository {
-  const AppRepositoryImpl(this._windowService, this._hotkeyService);
+final class InteractionRepositoryImpl implements InteractionRepository {
+  const InteractionRepositoryImpl(this._windowService, this._hotkeyService);
 
   final WindowService _windowService;
-  final HotKeyService _hotkeyService;
+  final HotkeyService _hotkeyService;
 
   @override
   Future<void> initialize() async => Future.wait([
