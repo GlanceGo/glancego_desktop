@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_command/flutter_command.dart';
-import 'package:glancego/data/domain/hot_key_modifier_enum.dart';
-import 'package:glancego/data/domain/hot_key_scope_enum.dart';
+import 'package:glancego/data/domain/enums/hotkey_modifier_enum.dart';
+import 'package:glancego/data/domain/enums/hotkey_scope_enum.dart';
 import 'package:glancego/data/repositories/interaction_repository.dart';
 
 final class RootViewModel extends ChangeNotifier {
@@ -20,15 +20,15 @@ final class RootViewModel extends ChangeNotifier {
 
   Future<void> _registerHotKeys() async {
     await _appRepository.registerHotKey(
-      scope: HotKeyScopeEnum.global,
+      scope: HotkeyScopeEnum.global,
       key: LogicalKeyboardKey.space,
-      modifiers: [HotKeyModifierEnum.alt],
+      modifiers: [HotkeyModifierEnum.alt],
       callback: () async => _appRepository.showWindow(),
     );
 
     await _appRepository.registerHotKey(
       key: LogicalKeyboardKey.escape,
-      scope: HotKeyScopeEnum.application,
+      scope: HotkeyScopeEnum.application,
       callback: () async => _appRepository.hideWindow(),
     );
   }
