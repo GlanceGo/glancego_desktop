@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
 
-final class HotKeyService {
-  const HotKeyService();
+final class HotkeyService {
+  const HotkeyService();
 
   Future<void> initialize() async => hotKeyManager.unregisterAll();
 
