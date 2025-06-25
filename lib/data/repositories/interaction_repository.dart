@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:glancego/data/domain/hot_key_modifier_enum.dart';
-import 'package:glancego/data/domain/hot_key_scope_enum.dart';
+import 'package:glancego/data/domain/enums/hotkey_modifier_enum.dart';
+import 'package:glancego/data/domain/enums/hotkey_scope_enum.dart';
 import 'package:glancego/data/services/hotkey_service.dart';
 import 'package:glancego/data/services/window_service.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
@@ -11,8 +11,8 @@ abstract class InteractionRepository {
   Future<void> hideWindow();
   Future<void> registerHotKey({
     required KeyboardKey key,
-    required HotKeyScopeEnum scope,
-    List<HotKeyModifierEnum> modifiers = const [],
+    required HotkeyScopeEnum scope,
+    List<HotkeyModifierEnum> modifiers = const [],
     VoidCallback? callback,
   });
 }
@@ -38,31 +38,31 @@ final class InteractionRepositoryImpl implements InteractionRepository {
   @override
   Future<void> registerHotKey({
     required KeyboardKey key,
-    required HotKeyScopeEnum scope,
-    List<HotKeyModifierEnum> modifiers = const [],
+    required HotkeyScopeEnum scope,
+    List<HotkeyModifierEnum> modifiers = const [],
     VoidCallback? callback,
   }) async {
     final HotKeyScope newScope;
     switch (scope) {
-      case HotKeyScopeEnum.global:
+      case HotkeyScopeEnum.global:
         newScope = HotKeyScope.system;
-      case HotKeyScopeEnum.application:
+      case HotkeyScopeEnum.application:
         newScope = HotKeyScope.inapp;
     }
 
     final newModifiers = modifiers.map((e) {
       switch (e) {
-        case HotKeyModifierEnum.alt:
+        case HotkeyModifierEnum.alt:
           return HotKeyModifier.alt;
-        case HotKeyModifierEnum.capsLock:
+        case HotkeyModifierEnum.capsLock:
           return HotKeyModifier.capsLock;
-        case HotKeyModifierEnum.ctrl:
+        case HotkeyModifierEnum.ctrl:
           return HotKeyModifier.control;
-        case HotKeyModifierEnum.fn:
+        case HotkeyModifierEnum.fn:
           return HotKeyModifier.fn;
-        case HotKeyModifierEnum.meta:
+        case HotkeyModifierEnum.meta:
           return HotKeyModifier.meta;
-        case HotKeyModifierEnum.shift:
+        case HotkeyModifierEnum.shift:
           return HotKeyModifier.shift;
       }
     }).toList();

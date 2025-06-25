@@ -1,1 +1,0 @@
-enum HotKeyScopeEnum { global, application }
