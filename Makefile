@@ -3,13 +3,17 @@ OUTPUT_PATH=${DEST_DIR}/glancego_${APP_VERSION}
 COMPLETE_APP_VERSION=$$(grep '^version:' ./pubspec.yaml | awk '{print $$2}')
 APP_VERSION=$$(grep '^version:' ./pubspec.yaml | sed -E 's/version:[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+)\+[0-9]+/\1/')
 
-.PHONY: icons macos_deps fedora_deps snap macos windows upgrade clean
+.PHONY: icons runner macos_deps fedora_deps snap macos windows upgrade clean
 
 icons:
 	@echo "Generating launch icons..."
 	@cp -f -v ./assets/icon_linux.svg ./snap/gui/glancego.svg
 	@cp -f -v ./assets/icon_macos.icns ./macos/packaging/dmg/icon.icns
 	@dart run flutter_launcher_icons
+
+runner:
+	@echo "Running the build_runner..."
+	@fvm dart run build_runner build -d
 
 macos_deps:
 	@echo "Installing macOS dependencies..."
