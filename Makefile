@@ -3,7 +3,7 @@ OUTPUT_PATH=${DEST_DIR}/glancego_${APP_VERSION}
 COMPLETE_APP_VERSION=$$(grep '^version:' ./pubspec.yaml | awk '{print $$2}')
 APP_VERSION=$$(grep '^version:' ./pubspec.yaml | sed -E 's/version:[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+)\+[0-9]+/\1/')
 
-.PHONY: icons runner macos_deps linux_deps fedora_deps snap macos windows upgrade clean
+.PHONY: icons runner macos_deps debian_deps fedora_deps deb snap macos windows upgrade clean
 
 icons:
 	@echo "Generating launch icons..."
@@ -19,9 +19,14 @@ macos_deps:
 	@echo "Installing macOS dependencies..."
 	@npm install -g appdmg
 
-linux_deps:
+debian_deps:
 	@echo "Installing Linux dependencies..."
-	@sudo apt-get install keybinder-3.0
+	@sudo apt install snapd libkeybinder-3.0-dev libkeybinder-3.0-0 gir1.2-keybinder-3.0 keybinder-3.0-doc
+	@sudo snap install lxd
+	@sudo snap install snapcraft --classic 
+	@sudo usermod -aG lxd $$(whoami)
+	@newgrp lxd
+	@lxd init
 
 fedora_deps:
 	@echo "Installing Fedora dependencies..."
@@ -29,6 +34,14 @@ fedora_deps:
 	@sudo ln -s /var/lib/snapd/snap /snap
 	@sudo snap install snapcraft --classic
 	@sudo snap install lxd
+
+deb:
+	@echo "Building Linux application..."
+	@make clean
+	@mkdir -p ${DEST_DIR}/
+	@fvm dart run fastforge:main release --name release --jobs linux
+	@mv ${DEST_DIR}/glancego-*-linux.deb ${OUTPUT_PATH}_linux_x64.deb
+	@echo "Done! Successfully packaged at $$(echo ${OUTPUT_PATH}_linux_x64.deb)"
 
 snap:
 	@echo "Building Snap application..."

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2025 SoftYes TI <contato@softyes.com.br> -->
+<!-- Copyright 2025 João Sereia <joao.sereia@softyes.com.br> -->
+
+<component type="desktop-application">
+  <id>br.com.softyes.glancego</id>
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>AGPL-3.0</project_license>
+  <name>GlanceGo</name>
+  <summary>Find everything you're looking for</summary>
+
+  <description>
+    Find everything you're looking for | An open-source file finder and application launcher designed to streamline your workflow.
+  </description>
+
+  <launchable type="desktop-id">br.com.softyes.glancego.desktop</launchable>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>Home Page</caption>
+      <image> https://github.com/glancego/glancego_desktop/blob/main/readme/linux/home.png?raw=true</image>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://softyes.com.br</url>
+  <url type="contact">mailto:contato@softyes.com.br</url>
+  <url type="vcs">https://github.com/glancego</url>
+  <url type="bugtracker">https://github.com/glancego/glancego_desktop/issues</url>
+  <project_group>br.com.softyes</project_group>
+
+  <provides>
+    <binary>glancego</binary>
+  </provides>
+
+  <releases>
+    <release version="0.2.0" date="2025-01-11">
+      <description>
+        <ul>
+          <li>UI/UX improvements</li>
+          <li>New app architecture</li>
+          <li>Added resizable sidebar</li>
+          <li>Play tracks from the lists</li>
+          <li>Added support for Linux, macOS and Windows</li>
+          <li>Added home page (system's default music directory)</li>
+          <li>Added player with controls (play, pause, seek, next and previous)</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.1.0" date="2024-11-02">
+      <description>
+        <ul>
+          <li>List USB devices</li>
+          <li>Added device and folder pages</li>
+          <li>List audio files from USB device</li>
+          <li>List audio files from local folder</li>
+          <li>Added symphony to the Windows context menu</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+</component>

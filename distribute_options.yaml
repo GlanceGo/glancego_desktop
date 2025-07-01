@@ -20,3 +20,13 @@ releases:
             release: true
             obfuscate: true
             split-debug-info: ./build/macos/debug_info
+
+      - name: linux
+        package:
+          target: deb
+          platform: linux
+          build_args:
+            release: true
+            obfuscate: true
+            tree-shake-icons: true
+            split-debug-info: ./build/linux/debug_info

@@ -1,0 +1,42 @@
+display_name: GlanceGo
+package_name: glancego
+icon: assets/icon_linux.svg
+generic_name: File finder and application launcher
+
+categories:
+  - Productivity
+  - File Management
+  - Utility
+
+keywords:
+  - file
+  - launcher
+  - search
+  - workflow
+  - productivity
+  - open-source
+
+maintainer:
+  name: SoftYes TI
+  email: contato@softyes.com.br
+
+co_authors:
+  - name: João Sereia
+    email: joao.sereia@softyes.com.br
+
+dependencies:
+  - libkeybinder-3.0-0
+  - gir1.2-keybinder-3.0
+
+section: utils
+priority: optional
+essential: false
+startup_notify: true
+installed_size: 56000
+metainfo: linux/packaging/br.com.softyes.glancego.appdata.xml
+
+postinstall_scripts:
+  - echo "Thank you for installing GlanceGo! We hope you enjoy using it. Stay tuned for news at <https://github.com/GlanceGo>"
+
+postuninstall_scripts:
+  - echo "GlanceGo has been successfully removed. We hope to see you again soon! Stay tuned for news at <https://github.com/GlanceGo>"
