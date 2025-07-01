@@ -1,4 +1,4 @@
-// ignore_for_file: cascade_invocations
+import 'dart:io';
 
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
@@ -47,10 +47,12 @@ final class WindowService {
     ]);
 
     await Future.wait([
-      if (hideWindowControls) Window.hideWindowControls(),
       if (preventClose) windowManager.setPreventClose(true),
-      if (makeTitlebarTransparent) Window.makeTitlebarTransparent(),
-      if (enableFullSizeContentView) Window.enableFullSizeContentView(),
+      if (makeTitlebarTransparent && Platform.isMacOS)
+        Window.makeTitlebarTransparent(),
+      if (enableFullSizeContentView && Platform.isMacOS)
+        Window.enableFullSizeContentView(),
+      if (hideWindowControls && !Platform.isLinux) Window.hideWindowControls(),
     ]);
 
     doWhenWindowReady(() {
@@ -63,6 +65,13 @@ final class WindowService {
   }
 
   Future<void> show() async {
+    final TitleBarStyle titleBarStyle;
+    if (hideTitlebar) {
+      titleBarStyle = TitleBarStyle.hidden;
+    } else {
+      titleBarStyle = TitleBarStyle.normal;
+    }
+
     final options = WindowOptions(
       size: size,
       title: title,
@@ -72,21 +81,26 @@ final class WindowService {
       fullScreen: fullScreen,
       alwaysOnTop: alwaysOnTop,
       skipTaskbar: skipTaskbar,
+      titleBarStyle: titleBarStyle,
       backgroundColor: backgroundColor,
       windowButtonVisibility: windowButtonVisibility,
-      titleBarStyle: hideTitlebar ? TitleBarStyle.hidden : TitleBarStyle.normal,
     );
 
-    await windowManager.waitUntilReadyToShow(options, () {
-      Window.setEffect(effect: effect);
+    await windowManager.waitUntilReadyToShow(options, () async {
+      await Window.setEffect(effect: effect, color: backgroundColor);
 
-      appWindow.hide();
-      appWindow.show();
-      windowManager.focus();
+      appWindow
+        ..hide()
+        ..show();
+
+      await windowManager.focus();
     });
   }
 
-  Future<void> hide() async => appWindow.hide();
+  Future<void> hide() async {
+    await windowManager.blur();
+    appWindow.hide();
+  }
 
   Future<void> close() async => appWindow.close();
 
