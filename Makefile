@@ -3,7 +3,7 @@ OUTPUT_PATH=${DEST_DIR}/glancego_${APP_VERSION}
 COMPLETE_APP_VERSION=$$(grep '^version:' ./pubspec.yaml | awk '{print $$2}')
 APP_VERSION=$$(grep '^version:' ./pubspec.yaml | sed -E 's/version:[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+)\+[0-9]+/\1/')
 
-.PHONY: icons runner macos_deps fedora_deps snap macos windows upgrade clean
+.PHONY: icons runner macos_deps linux_deps fedora_deps snap macos windows upgrade clean
 
 icons:
 	@echo "Generating launch icons..."
@@ -18,6 +18,10 @@ runner:
 macos_deps:
 	@echo "Installing macOS dependencies..."
 	@npm install -g appdmg
+
+linux_deps:
+	@echo "Installing Linux dependencies..."
+	@sudo apt-get install keybinder-3.0
 
 fedora_deps:
 	@echo "Installing Fedora dependencies..."
