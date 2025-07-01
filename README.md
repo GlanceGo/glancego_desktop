@@ -22,9 +22,9 @@ launcher designed to streamline your workflow.
 
 ## 🖥️ Platforms
 
-* Linux(snap) 🟡
 * macOS(>=11.5) ✅
 * Windows(>=10.0) ✅
+* Linux(debian-based) ✅
 
 ## 🧑‍💻 Contributing
 
