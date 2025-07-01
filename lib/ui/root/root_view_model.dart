@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_command/flutter_command.dart';
@@ -19,17 +21,33 @@ final class RootViewModel extends ChangeNotifier {
   Future<void> _initialize() async => _interactionRepository.initialize();
 
   Future<void> _registerHotKeys() async {
-    await _interactionRepository.registerHotKey(
-      scope: HotkeyScopeEnum.global,
-      key: LogicalKeyboardKey.space,
-      modifiers: [HotkeyModifierEnum.alt],
-      callback: () async => _interactionRepository.showWindow(),
-    );
+    final HotkeyScopeEnum hideScope;
+    final LogicalKeyboardKey showKey;
+    final List<HotkeyModifierEnum> hideModifiers;
 
-    await _interactionRepository.registerHotKey(
-      key: LogicalKeyboardKey.escape,
-      scope: HotkeyScopeEnum.application,
-      callback: () async => _interactionRepository.hideWindow(),
-    );
+    if (Platform.isLinux) {
+      hideScope = HotkeyScopeEnum.global;
+      showKey = LogicalKeyboardKey.keyG;
+      hideModifiers = [HotkeyModifierEnum.alt];
+    } else {
+      hideScope = HotkeyScopeEnum.application;
+      showKey = LogicalKeyboardKey.space;
+      hideModifiers = [];
+    }
+
+    await Future.wait([
+      _interactionRepository.registerHotKey(
+        scope: hideScope,
+        modifiers: hideModifiers,
+        key: LogicalKeyboardKey.escape,
+        callback: () async => _interactionRepository.hideWindow(),
+      ),
+      _interactionRepository.registerHotKey(
+        key: showKey,
+        scope: HotkeyScopeEnum.global,
+        modifiers: [HotkeyModifierEnum.alt],
+        callback: () async => _interactionRepository.showWindow(),
+      ),
+    ]);
   }
 }

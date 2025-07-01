@@ -15,18 +15,11 @@ import 'package:glancego/ui/root/root_view_model.dart';
 final class RootModule extends Module {
   @override
   void binds(Injector i) {
-    final WindowEffect effect;
-    if (Platform.isLinux) {
-      effect = WindowEffect.solid;
-    } else {
-      effect = WindowEffect.mica;
-    }
-
     const hotkeyService = HotkeyService();
     final windowService = WindowService(
       title: title,
-      effect: effect,
       size: const Size(600, 500),
+      effect: Platform.isLinux ? WindowEffect.solid : WindowEffect.mica,
     );
 
     i
