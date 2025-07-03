@@ -21,33 +21,29 @@ final class RootViewModel extends ChangeNotifier {
   Future<void> _initialize() async => _interactionRepository.initialize();
 
   Future<void> _registerHotKeys() async {
-    final HotkeyScopeEnum hideScope;
     final LogicalKeyboardKey showKey;
-    final List<HotkeyModifierEnum> hideModifiers;
+    const scope = HotkeyScopeEnum.global;
+    const hideKey = LogicalKeyboardKey.escape;
+    final modifiers = [HotkeyModifierEnum.alt];
 
     if (Platform.isLinux) {
-      hideScope = HotkeyScopeEnum.global;
       showKey = LogicalKeyboardKey.keyG;
-      hideModifiers = [HotkeyModifierEnum.alt];
     } else {
-      hideScope = HotkeyScopeEnum.application;
       showKey = LogicalKeyboardKey.space;
-      hideModifiers = [];
     }
 
-    await Future.wait([
-      _interactionRepository.registerHotKey(
-        scope: hideScope,
-        modifiers: hideModifiers,
-        key: LogicalKeyboardKey.escape,
-        callback: () async => _interactionRepository.hideWindow(),
-      ),
-      _interactionRepository.registerHotKey(
-        key: showKey,
-        scope: HotkeyScopeEnum.global,
-        modifiers: [HotkeyModifierEnum.alt],
-        callback: () async => _interactionRepository.showWindow(),
-      ),
-    ]);
+    await _interactionRepository.registerHotKey(
+      scope: scope,
+      key: showKey,
+      modifiers: modifiers,
+      callback: () async => _interactionRepository.showWindow(),
+    );
+
+    await _interactionRepository.registerHotKey(
+      scope: scope,
+      key: hideKey,
+      modifiers: modifiers,
+      callback: () async => _interactionRepository.hideWindow(),
+    );
   }
 }

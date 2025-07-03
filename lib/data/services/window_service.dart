@@ -97,10 +97,7 @@ final class WindowService {
     });
   }
 
-  Future<void> hide() async {
-    await windowManager.blur();
-    appWindow.hide();
-  }
+  Future<void> hide() async => appWindow.hide();
 
   Future<void> close() async => appWindow.close();
 
