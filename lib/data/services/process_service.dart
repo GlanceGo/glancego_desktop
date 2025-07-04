@@ -12,6 +12,8 @@ final class ProcessService {
     String? executable,
   }) async {
     final String exec;
+    const encoding = Utf8Codec(allowMalformed: true);
+
     if (executable != null && shell == ProcessExecEnum.custom) {
       exec = executable;
     } else {
@@ -22,8 +24,8 @@ final class ProcessService {
       exec,
       arguments,
       runInShell: true,
-      stderrEncoding: utf8,
-      stdoutEncoding: utf8,
+      stderrEncoding: encoding,
+      stdoutEncoding: encoding,
     );
 
     return result;
