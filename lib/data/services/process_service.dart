@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:glancego/data/domain/enums/process_exec_enum.dart';
+import 'package:glancego/domain/enums/process_exec_enum.dart';
 
 final class ProcessService {
   const ProcessService();

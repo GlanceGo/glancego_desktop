@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
-import 'package:glancego/data/domain/enums/hotkey_modifier_enum.dart';
-import 'package:glancego/data/domain/enums/hotkey_scope_enum.dart';
 import 'package:glancego/data/services/hotkey_service.dart';
 import 'package:glancego/data/services/window_service.dart';
+import 'package:glancego/domain/enums/hotkey_modifier_enum.dart';
+import 'package:glancego/domain/enums/hotkey_scope_enum.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
 
 abstract class InteractionRepository {
