@@ -37,8 +37,8 @@ final class DirectoryService {
     final mainExe = Platform.resolvedExecutable;
     final mainDir = Directory(p.dirname(mainExe));
 
-    final path = p.join(mainDir.path, 'assets');
-    final dir = await create(Uri.parse(path));
+    final path = p.join(mainDir.path, 'data', 'flutter_assets', 'assets');
+    final dir = await create(Uri.file(path));
 
     return dir;
   }
