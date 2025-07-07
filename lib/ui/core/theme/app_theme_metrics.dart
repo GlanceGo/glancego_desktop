@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 final class AppThemeMetricsImpl extends AppThemeMetrics {
@@ -8,6 +9,7 @@ final class AppThemeMetricsImpl extends AppThemeMetrics {
     super.medium = 16,
     super.large = 24,
     super.icon = 24,
+    super.field = const BoxConstraints(minHeight: 60, maxHeight: 60),
     super.curve = Curves.easeInOut,
     super.duration = const Duration(milliseconds: 200),
   });
@@ -19,6 +21,7 @@ final class AppThemeMetrics extends ThemeExtension<AppThemeMetrics> {
     required this.medium,
     required this.large,
     required this.icon,
+    required this.field,
     required this.curve,
     required this.duration,
   });
@@ -27,6 +30,7 @@ final class AppThemeMetrics extends ThemeExtension<AppThemeMetrics> {
   final double medium;
   final double large;
   final double icon;
+  final BoxConstraints field;
   final Curve curve;
   final Duration duration;
 
@@ -36,6 +40,7 @@ final class AppThemeMetrics extends ThemeExtension<AppThemeMetrics> {
     double? medium,
     double? large,
     double? icon,
+    BoxConstraints? field,
     Curve? curve,
     Duration? duration,
   }) {
@@ -44,6 +49,7 @@ final class AppThemeMetrics extends ThemeExtension<AppThemeMetrics> {
       medium: medium ?? this.medium,
       large: large ?? this.large,
       icon: icon ?? this.icon,
+      field: field ?? this.field,
       curve: curve ?? this.curve,
       duration: duration ?? this.duration,
     );
@@ -61,8 +67,9 @@ final class AppThemeMetrics extends ThemeExtension<AppThemeMetrics> {
       medium: lerpDouble(medium, other.medium, t)!,
       large: lerpDouble(large, other.large, t)!,
       icon: lerpDouble(icon, other.icon, t)!,
+      field: BoxConstraints.lerp(field, other.field, t)!,
       curve: t < 0.5 ? curve : other.curve,
-      duration: t < 0.5 ? duration : other.duration,
+      duration: lerpDuration(duration, other.duration, t),
     );
   }
 }
