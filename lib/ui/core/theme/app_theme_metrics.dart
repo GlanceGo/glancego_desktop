@@ -7,8 +7,9 @@ final class AppThemeMetricsImpl extends AppThemeMetrics {
   const AppThemeMetricsImpl({
     super.small = 8,
     super.medium = 16,
-    super.large = 24,
+    super.large = 32,
     super.icon = 24,
+    super.blur = 32,
     super.field = const BoxConstraints(minHeight: 60, maxHeight: 60),
     super.curve = Curves.easeInOut,
     super.duration = const Duration(milliseconds: 200),
@@ -21,6 +22,7 @@ final class AppThemeMetrics extends ThemeExtension<AppThemeMetrics> {
     required this.medium,
     required this.large,
     required this.icon,
+    required this.blur,
     required this.field,
     required this.curve,
     required this.duration,
@@ -30,6 +32,7 @@ final class AppThemeMetrics extends ThemeExtension<AppThemeMetrics> {
   final double medium;
   final double large;
   final double icon;
+  final double blur;
   final BoxConstraints field;
   final Curve curve;
   final Duration duration;
@@ -40,6 +43,7 @@ final class AppThemeMetrics extends ThemeExtension<AppThemeMetrics> {
     double? medium,
     double? large,
     double? icon,
+    double? blur,
     BoxConstraints? field,
     Curve? curve,
     Duration? duration,
@@ -49,6 +53,7 @@ final class AppThemeMetrics extends ThemeExtension<AppThemeMetrics> {
       medium: medium ?? this.medium,
       large: large ?? this.large,
       icon: icon ?? this.icon,
+      blur: blur ?? this.blur,
       field: field ?? this.field,
       curve: curve ?? this.curve,
       duration: duration ?? this.duration,
@@ -67,6 +72,7 @@ final class AppThemeMetrics extends ThemeExtension<AppThemeMetrics> {
       medium: lerpDouble(medium, other.medium, t)!,
       large: lerpDouble(large, other.large, t)!,
       icon: lerpDouble(icon, other.icon, t)!,
+      blur: lerpDouble(blur, other.blur, t)!,
       field: BoxConstraints.lerp(field, other.field, t)!,
       curve: t < 0.5 ? curve : other.curve,
       duration: lerpDuration(duration, other.duration, t),
