@@ -15,7 +15,6 @@ final class WindowService {
     this.fullScreen = false,
     this.preventClose = true,
     this.hideTitlebar = true,
-    this.effect = WindowEffect.mica,
     this.hideWindowControls = true,
     this.makeTitlebarTransparent = true,
     this.windowButtonVisibility = false,
@@ -32,7 +31,6 @@ final class WindowService {
   final bool fullScreen;
   final bool preventClose;
   final bool hideTitlebar;
-  final WindowEffect effect;
   final bool hideWindowControls;
   final bool makeTitlebarTransparent;
   final bool windowButtonVisibility;
@@ -61,10 +59,11 @@ final class WindowService {
       appWindow.minSize = size;
       appWindow.maxSize = size;
       appWindow.alignment = alignment;
+      appWindow.hide();
     });
   }
 
-  Future<void> show() async {
+  Future<void> show({required WindowEffect effect}) async {
     final TitleBarStyle titleBarStyle;
     if (hideTitlebar) {
       titleBarStyle = TitleBarStyle.hidden;
@@ -87,7 +86,7 @@ final class WindowService {
     );
 
     await windowManager.waitUntilReadyToShow(options, () async {
-      await Window.setEffect(effect: effect, color: backgroundColor);
+      await Window.setEffect(color: backgroundColor, effect: effect);
 
       appWindow
         ..hide()
@@ -102,4 +101,9 @@ final class WindowService {
   Future<void> close() async => appWindow.close();
 
   Future<void> restore() async => appWindow.restore();
+
+  Future<void> setEffect(WindowEffect effect) async => Window.setEffect(
+    effect: effect,
+    color: backgroundColor,
+  );
 }

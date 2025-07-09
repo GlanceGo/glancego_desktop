@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:glancego/ui/core/widgets/window_frame_widget.dart';
 import 'package:glancego/ui/root/root_view_model.dart';
 
 final class RootScreen extends StatefulWidget {
@@ -16,12 +17,14 @@ final class _RootScreenState extends State<RootScreen> {
   void initState() {
     super.initState();
     _viewModel = Modular.get<RootViewModel>();
-    _viewModel.initialize.execute();
+    _viewModel.initialize.execute(context);
     _viewModel.registerHotKeys.execute();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const RouterOutlet();
+    return const WindowFrameWidget(
+      child: SizedBox.expand(child: RouterOutlet()),
+    );
   }
 }

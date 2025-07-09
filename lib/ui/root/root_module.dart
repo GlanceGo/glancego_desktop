@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_acrylic/flutter_acrylic.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:glancego/data/repositories/interaction_repository.dart';
 import 'package:glancego/data/services/hotkey_service.dart';
@@ -16,15 +13,11 @@ final class RootModule extends Module {
   @override
   void binds(Injector i) {
     const hotkeyService = HotkeyService();
-    final windowService = WindowService(
-      title: title,
-      size: const Size(600, 500),
-      effect: Platform.isLinux ? WindowEffect.solid : WindowEffect.mica,
-    );
+    const windowService = WindowService(title: title, size: Size(600, 500));
 
     i
       ..addSingleton<InteractionRepository>(
-        () => InteractionRepositoryImpl(windowService, hotkeyService),
+        () => const InteractionRepositoryImpl(windowService, hotkeyService),
       )
       ..addSingleton<RootViewModel>(
         () => RootViewModel(i.get<InteractionRepository>()),

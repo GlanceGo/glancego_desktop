@@ -1,14 +1,17 @@
 import 'package:flutter/services.dart';
+import 'package:flutter_acrylic/flutter_acrylic.dart';
 import 'package:glancego/data/services/hotkey_service.dart';
 import 'package:glancego/data/services/window_service.dart';
 import 'package:glancego/domain/enums/hotkey_modifier_enum.dart';
 import 'package:glancego/domain/enums/hotkey_scope_enum.dart';
+import 'package:glancego/domain/enums/window_effect_enum.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
 
 abstract class InteractionRepository {
   Future<void> initialize();
-  Future<void> showWindow();
+  Future<void> showWindow({required WindowEffectEnum effect});
   Future<void> hideWindow();
+  Future<void> setWindowEffect(WindowEffectEnum effect);
   Future<void> registerHotKey({
     required KeyboardKey key,
     required HotkeyScopeEnum scope,
@@ -30,7 +33,16 @@ final class InteractionRepositoryImpl implements InteractionRepository {
   ]);
 
   @override
-  Future<void> showWindow() async => _windowService.show();
+  Future<void> showWindow({required WindowEffectEnum effect}) async {
+    final WindowEffect windowEffect;
+    if (effect == WindowEffectEnum.acrylic) {
+      windowEffect = WindowEffect.acrylic;
+    } else {
+      windowEffect = WindowEffect.transparent;
+    }
+
+    await _windowService.show(effect: windowEffect);
+  }
 
   @override
   Future<void> hideWindow() => _windowService.hide();
@@ -73,5 +85,17 @@ final class InteractionRepositoryImpl implements InteractionRepository {
       modifiers: newModifiers,
       callback: callback,
     );
+  }
+
+  @override
+  Future<void> setWindowEffect(WindowEffectEnum effect) async {
+    final WindowEffect newEffect;
+    if (effect == WindowEffectEnum.acrylic) {
+      newEffect = WindowEffect.acrylic;
+    } else {
+      newEffect = WindowEffect.transparent;
+    }
+
+    await _windowService.setEffect(newEffect);
   }
 }
