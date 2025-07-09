@@ -4,6 +4,7 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   bitsdojo_window_linux
+  dynamic_system_colors
   flutter_acrylic
   hotkey_manager_linux
   screen_retriever_linux

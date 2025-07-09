@@ -20,8 +20,11 @@ final class TextFieldWidget extends StatelessWidget with AppThemeMixin {
   Widget build(BuildContext context) {
     final (colors, metrics, textTheme, brightness) = getTheme(context);
 
-    final hintTextColor = colors.onSurface.withValues(alpha: 0.6);
-    const border = OutlineInputBorder(borderSide: BorderSide.none);
+    final borderRadius = BorderRadius.all(metrics.radius);
+    final border = OutlineInputBorder(
+      borderSide: BorderSide.none,
+      borderRadius: borderRadius,
+    );
 
     return TextFormField(
       autofocus: true,
@@ -30,7 +33,7 @@ final class TextFieldWidget extends StatelessWidget with AppThemeMixin {
       keyboardAppearance: brightness,
       textInputAction: textInputAction,
       enableInteractiveSelection: true,
-      style: textTheme.bodyLarge!.copyWith(color: colors.onSurface),
+      style: textTheme.titleLarge!.copyWith(color: colors.onSurface),
       decoration: InputDecoration(
         filled: false,
         border: border,
@@ -40,9 +43,12 @@ final class TextFieldWidget extends StatelessWidget with AppThemeMixin {
         focusedBorder: border,
         disabledBorder: border,
         focusedErrorBorder: border,
-        prefixIcon: IconWidget(icon: icon, color: hintTextColor),
-        constraints: BoxConstraints.tight(const Size.fromHeight(60)),
-        hintStyle: textTheme.titleLarge!.copyWith(color: hintTextColor),
+        constraints: metrics.field,
+        fillColor: colors.surface,
+        focusColor: Colors.transparent,
+        hoverColor: Colors.transparent,
+        prefixIcon: IconWidget(icon: icon, color: colors.onSurfaceAlt),
+        hintStyle: textTheme.titleLarge!.copyWith(color: colors.onSurfaceAlt),
       ),
     );
   }

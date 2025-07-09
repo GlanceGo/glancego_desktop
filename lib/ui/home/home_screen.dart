@@ -29,12 +29,12 @@ final class HomeScreen extends StatelessWidget with AppThemeMixin {
                 IconWidget(
                   size: 24,
                   icon: SolarLinearIcons.magniferRounded,
-                  color: colors.onSurface.withValues(alpha: 0.6),
+                  color: colors.onSurfaceAlt,
                 ),
                 Text(
                   'Search for something',
                   style: textTheme.bodyMedium!.copyWith(
-                    color: colors.onSurface.withValues(alpha: 0.6),
+                    color: colors.onSurfaceAlt,
                   ),
                 ),
               ],

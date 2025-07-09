@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_command/flutter_command.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:glancego/app_builder.dart';
 import 'package:glancego/routing/app_routes.dart';
 import 'package:glancego/ui/core/theme/app_theme.dart';
+import 'package:glancego/ui/core/widgets/app_theme_widget.dart';
 import 'package:glancego/ui/root/root_module.dart';
 
 const title = 'GlanceGo';
@@ -16,7 +16,12 @@ void main() {
     log(err.toString(), name: 'Command', stackTrace: stack);
   };
 
-  runApp(ModularApp(module: RootModule(), child: const MyApp()));
+  runApp(
+    ModularApp(
+      module: RootModule(),
+      child: const AppThemeWidget(child: MyApp()),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -35,15 +40,16 @@ final class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme(context: context);
+
     return MaterialApp.router(
       title: title,
       debugShowCheckedModeBanner: false,
       themeAnimationCurve: Curves.easeInOut,
-      theme: AppTheme.getData(isDark: false),
-      darkTheme: AppTheme.getData(isDark: true),
+      theme: theme.getData(isDark: false),
+      darkTheme: theme.getData(isDark: true),
       routerDelegate: Modular.routerDelegate,
       routeInformationParser: Modular.routeInformationParser,
-      builder: (_, child) => AppBuilder(child: child),
     );
   }
 }
