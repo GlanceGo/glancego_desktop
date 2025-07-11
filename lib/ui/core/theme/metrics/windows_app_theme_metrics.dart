@@ -8,7 +8,7 @@ final class WindowsAppThemeMetrics extends AppThemeMetrics {
     super.medium = 16,
     super.large = 32,
     super.icon = 24,
-    super.blur = 32,
+    super.blur = 38,
     super.radius = const Radius.circular(8),
     super.field = const BoxConstraints(minHeight: 60, maxHeight: 60),
     super.curve = Curves.easeInOut,

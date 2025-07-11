@@ -92,17 +92,17 @@ final class AppTheme {
           color: colors.onBackground,
         ),
         headlineSmall: TextStyle(
-          fontSize: 20,
+          fontSize: 18,
           fontWeight: FontWeight.w700,
           color: colors.onBackground,
         ),
         headlineMedium: TextStyle(
-          fontSize: 22,
+          fontSize: 20,
           fontWeight: FontWeight.w700,
           color: colors.onBackground,
         ),
         headlineLarge: TextStyle(
-          fontSize: 24,
+          fontSize: 22,
           fontWeight: FontWeight.w700,
           color: colors.onBackground,
         ),
