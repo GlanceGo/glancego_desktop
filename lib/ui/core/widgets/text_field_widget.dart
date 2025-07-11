@@ -10,6 +10,9 @@ final class TextFieldWidget extends StatelessWidget with AppThemeMixin {
     this.textType = TextWidgetType.bodyMedium,
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.done,
+    this.controller,
+    this.onChanged,
+    this.onSubmitted,
     super.key,
   });
 
@@ -18,6 +21,9 @@ final class TextFieldWidget extends StatelessWidget with AppThemeMixin {
   final TextWidgetType textType;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
+  final TextEditingController? controller;
+  final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onSubmitted;
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +59,11 @@ final class TextFieldWidget extends StatelessWidget with AppThemeMixin {
 
     return TextFormField(
       autofocus: true,
+      onChanged: onChanged,
+      controller: controller,
       keyboardType: keyboardType,
       cursorColor: colors.primary,
+      onFieldSubmitted: onSubmitted,
       keyboardAppearance: brightness,
       textInputAction: textInputAction,
       enableInteractiveSelection: true,
