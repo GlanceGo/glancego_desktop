@@ -5,7 +5,7 @@ import 'package:flutter_command/flutter_command.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:glancego/routing/app_routes.dart';
 import 'package:glancego/ui/core/theme/app_theme.dart';
-import 'package:glancego/ui/core/widgets/app_theme_widget.dart';
+import 'package:glancego/ui/core/theme/app_theme_widget.dart';
 import 'package:glancego/ui/root/root_module.dart';
 
 const title = 'GlanceGo';
