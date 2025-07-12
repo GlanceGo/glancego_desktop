@@ -18,13 +18,14 @@ version: 0.3.0+4
 
 environment:
   sdk: ^3.8.1
-  flutter: ^3.32.5
+  flutter: ^3.32.6
 
 dependencies:
   flutter:
     sdk: flutter
 
   path: ^1.9.1
+  diacritic: ^0.1.6
   google_fonts: ^6.2.1
   dart_mappable: ^4.5.0
   path_provider: ^2.1.5
@@ -55,3 +56,4 @@ flutter:
 
   assets:
     - assets/icon.png
+    - assets/scripts/
